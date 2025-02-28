@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fertilizer Recommendation</title>
+    <style>
+        body {
+            background-image: url("https://www.icl-group.com/wp-content/uploads/2022/07/fetilizers-101-1-1.jpg");
+            background-size: 125em;
+            background-repeat: no-repeat;
+            margin: 10px;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            background-color: rgba(44, 62, 80, 0.9);
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            position: absolute;
+            top: 55%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+        }
+
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container .b2 {
+            display: block;
+            width: 100%;
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container .b2:hover {
+            background-color: #145a32;
+        }
+
+        .footer-bottom {
+            position: absolute;
+            bottom: -30px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: black;
+            padding: 15px 0 10px;
+            background: lightgray;
+            border-top: 1px solid #333;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>FERTILIZER RECOMMENDATION</h1>
+        <nav class="n1">
+            <a href="{{ url_for('review') }}">FEEDBACK</a>
+            <a href="{{ url_for('contact') }}">CONTACT</a>
+            <a href="{{ url_for('option') }}">LOG OUT</a>
+        </nav>
+    </header>
+    <div class="form-container">
+        <form action="{{ url_for('predict_fertilizer') }}" method="POST">
+            <label for="ph">PH:</label>
+            <input type="number" id="ph" name="ph" required>
+
+            <label for="Soil_color">SOIL COLOR:</label>
+            <select id="Soil_color" name="Soil_color">
+                <option value="red">Red</option>
+                <option value="black">Black</option>
+                <option value="brown">Brown</option>
+                <option value="yellow">Yellow</option>
+                <option value="other">Other</option>
+            </select>
+
+
+
+            <label for="nitrogen">NITROGEN:</label>
+            <input type="number" id="nitrogen" name="nitrogen" required>
+
+            <label for="phosphorus">PHOSPHORUS:</label>
+            <input type="number" id="phosphorus" name="phosphorus" required>
+
+            <label for="potassium">POTASSIUM:</label>
+            <input type="number" id="potassium" name="potassium" required>
+
+
+            <label for="Crop">CROP TYPE:</label>
+            <select id="Crop" name="Crop">
+                <option value="wheat">Wheat</option>
+                <option value="rice">Rice</option>
+                <option value="maize">Maize</option>
+                <option value="barley">Barley</option>
+                <option value="other">Other</option>
+            </select>
+
+
+            <button class="b2" type="submit">FERTILIZER</button>
+        </form>
+        {% if result %}
+        <div class="result-container">
+            <h2>Recommended Fertilizer: {{ result }}</h2>
+        </div>
+        {% endif %}
+    </div>
+    <footer>
+        <h3><p class="footer-bottom">&copy; 2025 Santosh Vanapalli | All Rights Reserved</p></h3>
+    </footer>
+</body>
+
+</html>

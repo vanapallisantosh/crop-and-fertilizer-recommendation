@@ -1,0 +1,105 @@
+<<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PROJECT</title>
+        <style>
+            body {
+                background-image: url("https://wallpapercave.com/wp/wp3515752.png");
+                margin: 0;
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+
+            main {
+                flex: 1;
+            }
+
+
+            .navbar {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                padding: 5px 10px;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                background-color: rgba(57, 69, 78, 0.9);
+                border-radius: 5px;
+            }
+
+            .navbar a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                padding: 10px 15px;
+                border-radius: 5px;
+                transition: 0.3s;
+                margin-left: 10px;
+                font-size: 25px;
+            }
+
+            .navbar a:hover {
+                background-color: #1abc9c;
+                color: white;
+            }
+
+            .content {
+                text-align: center;
+                padding-top: 100px;
+                color: white;
+            }
+
+            h1 {
+                font-size: 50px;
+                margin-top: -120px;
+                color: black;
+                background-color: lightgrey;
+                padding: 20px;
+            }
+
+            h3 {
+                font-size: 40px;
+                margin-top: -10px;
+                color: white;
+            }
+
+            /* Copyright Text */
+            .footer-bottom {
+                position: absolute;
+                bottom: -15px;
+                width: 100%;
+                text-align: center;
+                font-size: 14px;
+                color: black;
+                padding: 15px 0 10px;
+                background: lightgray;
+                border-top: 1px solid #333;
+                animation: fadeIn 1s ease-in-out;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+        </nav>
+        <main>
+            <div class="content">
+                <h1>AGRICULTURE</h1>
+                <h3>CROP AND FERTILIZER RECOMMENDATION</h3>
+            </div>
+
+        </main>
+        <footer>
+           <h3><p class="footer-bottom">&copy; 2025 Santosh Vanapalli | All Rights Reserved</p></h3>
+        </footer>
+    </body>
+
+    </html>
